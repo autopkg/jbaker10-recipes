@@ -23,12 +23,19 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>https://osquery.io/downloads/</string>
+				<string>https://github.com/facebook/osquery/releases/latest</string>
 				<key>re_pattern</key>
-				<string>&lt;a href="(?P&lt;url&gt;https://.*/osquery.*\.pkg)"&gt;</string>
+				<string>Release ([\d\.]+)</string>
+				<key>result_output_var_name</key>
+				<string>ver</string>
 			</dict>
 		</dict>
 		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>url</key>
+				<string>https://osquery-packages.s3.amazonaws.com/darwin/osquery-%ver%.pkg</string>
+			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
 		</dict>
